@@ -1,0 +1,7 @@
+write a program to learn read() from keyboard file and write() into monitor file.
+write a program to read from normal file and display to monitor using open(), read and write().
+write a program to write into a normal file using open(), read() and write().
+write a program to create a named pipe using mkfifo().
+write a program to write into a named pipe what is read from keyboard using open(), read() and write().
+write a program to read from a named pipe and then display to monitor using open(), read(), write().
+chat program with pipe
