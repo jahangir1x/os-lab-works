@@ -19,5 +19,6 @@
 #include <unistd.h>
 #include <wchar.h>
 #include <wctype.h>
-#include<pthread.h>
+#include <pthread.h>
 #include <semaphore.h>
+#include <sys/mman.h>
