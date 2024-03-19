@@ -1,0 +1,14 @@
+* total 7 types of files -> linux
+* linux case study, windows case study -> last part of book
+soft link and hard link
+inode in linux
+SIGTERM
+
+void signal_handler(int signalNo) {
+    printf("recd, signalNo);
+}
+
+signal(SIGTERM, signal_handler);
+
+test all 64 signals in c and which one can be caught and which cannot be caught.
+
