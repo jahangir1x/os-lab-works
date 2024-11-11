@@ -5,11 +5,6 @@
 int main() {
     int pid = fork();
 
-    if (pid < 0) {
-        perror("Fork failed");
-        exit(1);
-    }
-
     if (pid > 0) {
         printf("Parent process (PID: %d) created a child process (PID: %d)\n", getpid(), pid);
         sleep(1000);

@@ -79,6 +79,60 @@ prctl(PR_SET_NAME, "process_name", 0, 0, 0);
 // create process =============
 execlp("./sample", NULL);
 
+// system calls ==================
+if (access("./file_path", F_OK) == 0) {
+    // file exists
+}
+write(STDOUT_FILENO, "hello", 5+1);
+char buffer[1024];
+read(STDIN_FILENO, &buffer, sizeof(buffer));
+
+// shared memory ================
+char *shared_memory_name = "/sum_shared"
+// write
+int shm_fd = shm_open(shared_memory_name, O_CREAT | O_RDWR, 0666);
+int* shared_memory = (int *) mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE,
+    MAP_SHARED, shm_fd, 0);
+ftruncate(shm_fd, sizeof(int));
+*shared_memory = 100
+// read
+int shm_fd = shm_open(shared_memory_name, O_RDONLY, 0666);
+int*  shared_memory = (int *) mmap(NULL, sizeof(int), PROT_READ,
+    MAP_SHARED, shm_fd, 0);
+cout << *shared_memory
+
+munmap(shared_memory, sizeof(int));
+shm_unlink(shared_memory_name);
+
+// niceness and priority ============
+// 0 -> 139 priority
+// 0 -> 99 realtime : managed by kernel
+// 100 -> 139 user_space (00 -> 39)
+// PR = 00 : more priority
+// PR = 39 : low priority
+// NI = 19 low cpu (more nice)
+// NI = -20 high cpu (less nice)
+// PR = 20 + NI
+int core_no = sched_getcpu();
+int niceness = getpriority(PRIO_PROCESS, 0);
+setpriority(PRIO_PROCESS, 0, 10);
+
+// signal ===========================
+// process
+kill(pid, SIGUSR1)
+// receiver
+signal(SIGUSR1, signal_handler);
+void signal_handler(int sig) {
+    // received
+}
+// thread
+pthread_t receiver_thread;
+pthread_kill(receiver_thread, SIGUSR1);
+// receive
+signal(SIGUSR1, signal_handler);
+void signal_handler(int sig) {
+    // received
+}
 
 
 ```
